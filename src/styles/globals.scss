@@ -1,0 +1,25 @@
+@use "base/variables";
+@use "base/fonts";
+@use "base/utilities";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Huninn";
+}
+
+button,
+a,
+input,
+textarea {
+  font-family: "Huninn";
+  transition-duration: var(--transition-duration);
+}
+
+input:focus {
+  outline: none;
+}

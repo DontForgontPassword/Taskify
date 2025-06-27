@@ -1,0 +1,16 @@
+.header {
+    &Inner {
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &Title {
+        font-family: "Huninn";
+    }
+
+    &SubTitle {
+        font-family: "Huninn";
+    }
+}
