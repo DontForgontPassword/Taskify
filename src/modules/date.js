@@ -1,11 +1,11 @@
 const Days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday"
 ]
 
 const DateService = {
@@ -13,7 +13,7 @@ const DateService = {
         const currentDate = new Date();
         const currentDay = currentDate.getDay();
 
-        return Days[currentDay - 1];
+        return Days[currentDay];
     },
     currentTime: () => {
         const currentDate = new Date();
