@@ -1,0 +1,43 @@
+.card {
+    &__info {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    &__wrapper {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        background-color: #eeeeee;
+        border-radius: 10px;
+    }
+
+    &__button {
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        border: none;
+        border-radius: var(--button-border-radius);
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__remove {
+        background-color: red;
+    }
+
+    &__editor {
+        display: flex;
+        gap: 10px;
+    }
+}

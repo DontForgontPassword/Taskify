@@ -1,34 +1,38 @@
-.todo {
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
+@use 'sass:color';
 
-    &Box {
+.todo {
+    &__container {
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+    }
+
+    &__box {
         width: 500px;
 
         display: flex;
         flex-direction: column;
-        row-gap: 15px;
+        gap: 15px;
     }
 
-    &InputWrapper {
+    &__input-wrapper {
         position: relative;
     }
 
-    &Meta {
+    &__meta {
         display: flex;
         justify-content: space-between;
     }
 
-    &Time {
+    &__time {
         font-size: 3rem;
     }
 
-    &Day {
+    &__day {
         font-size: 3rem;
     }
 
-    &Input {
+    &__input {
         width: 100%;
         height: 60px;
         padding: 5px 45px 5px 25px;
@@ -42,7 +46,7 @@
         }
     }
 
-    &InputIcon {
+    &__input-icon {
         position: absolute;
         top: 50%;
         right: 15px;
@@ -50,15 +54,15 @@
         pointer-events: none;
     }
 
-    &DateWrapper {
+    &__date-wrapper {
         display: flex;
         justify-content: space-between;
     }
 
-    &DateButton {
+    &__date-button {
         display: flex;
         align-items: center;
-        column-gap: 10px;
+        gap: 10px;
         background-color: transparent;
         border: none;
         cursor: pointer;
@@ -76,12 +80,12 @@
         }
     }
 
-    &Submit {
+    &__submit {
         width: 100%;
         height: 60px;
 
         background-color: #2b2b41;
-        border-radius: 5px;
+        border-radius: var(--button-border-radius);
         border: 2px solid #262630;
         color: white;
         font-size: 1.25rem;
@@ -89,7 +93,27 @@
         cursor: pointer;
 
         &:hover {
-            transform: translateY(5%);
+            background-color: color.scale(#2b2b41, $lightness: -10%);
+        }
+    }
+
+    &__data-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        padding: 10px;
+        box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+        overflow-y: auto;
+        max-height: 500px;
+    
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #262630;
+            border-radius: 5px;
         }
     }
 }
