@@ -10,17 +10,17 @@ const Days = [
 
 const DateService = {
     currentDay: () => {
-        const currentDate = new Date();
-        const currentDay = currentDate.getDay();
+        const current_date = new Date();
+        const current_day = current_date.getDay();
 
-        return Days[currentDay];
+        return Days[current_day];
     },
     currentTime: () => {
-        const currentDate = new Date();
-        const currentHours = currentDate.getHours();
-        const currentMinutes = currentDate.getMinutes();
+        const current_date = new Date();
+        const current_hours = current_date.getHours();
+        const current_minutes = current_date.getMinutes();
 
-        return `${currentHours}:${currentMinutes < 10 ? "0" + currentMinutes : currentMinutes}`
+        return `${current_hours}:${current_minutes < 10 ? "0" + current_minutes : current_minutes}`
     }
 }
 
