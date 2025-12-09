@@ -3,15 +3,6 @@
     height: $size;
 }
 
-@mixin reset-input {
-    background-color: transparent;
-    color: inherit;
-
-    &::placeholder {
-        color: inherit;
-    }
-}
-
 @mixin flex-center {
     display: flex;
     justify-content: center;

@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import styles from "./Todo.module.scss"
-import { useTodoStore } from "@/hooks/useTodoStore";
+import { useTodoStore } from "@/store/useTodoStore";
 
-import Input from "@/components/Input/Input";
-import Button from "@/components/Button/Button";
+import { Button } from "@/components/Button/Button";
+import { Input } from "@/components/Input/Input";
 
 const Todo = () => {
     const [content, setContent] = useState("");
@@ -28,12 +28,16 @@ const Todo = () => {
         <div className={styles.todo}>
             <h2 className={styles.title}>Добавить задачу</h2>
             <div className={styles.wrapper}>
-                <Input type="text" labelText="Какова Ваша задача?" id="task" onChange={(event) => {
-                    setContent(event.target.value)
-                }} className={styles.input} />
-                <Input type="date" labelText="Какова Ваша задача?" id="date" onChange={(event) => {
-                    setDate(event.target.value)
-                }} className={styles.input} />
+                <label>Какова Ваша задача?
+                    <Input type="text" onChange={(event) => {
+                        setContent(event.target.value)
+                    }} className={styles.input} />
+                </label>
+                <label>Каков Ваш дед-лайн?
+                    <Input type="date" onChange={(event) => {
+                        setDate(event.target.value)
+                    }} className={styles.input} />
+                </label>
                 <Button className={styles.button} onClick={() => {
                     handleAddTodos(content)
                 }}>Добавить задачу</Button>
@@ -42,4 +46,4 @@ const Todo = () => {
     );
 }
 
-export default Todo;
+export { Todo };

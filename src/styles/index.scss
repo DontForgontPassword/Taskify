@@ -1,7 +1,2 @@
-@forward "./abstracts/fonts";
-@forward "./abstracts/mixins";
-@forward "./abstracts/variables";
-@forward "./abstracts/placeholder";
-
-@forward "./base/reset";
-@forward "./base/base";
+@use "fonts";
+@use "reset";

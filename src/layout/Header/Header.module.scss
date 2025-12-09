@@ -10,6 +10,7 @@
 
 .title {
     font-family: var(--font-secondary);
+    font-size: 3rem;
 }
 
 .carousel {
@@ -21,7 +22,8 @@
         content: "";
         position: absolute;
         top: 0;
-        @include proportion(45px);
+        width: 45px;
+        height: 45px;
         z-index: 1;
     }
 
@@ -43,6 +45,8 @@
     padding: 10px;
     width: 700px;
 
+    animation: scroll 3s linear infinite;
+
     @include tablet {
         width: 400px;
     }
@@ -50,8 +54,19 @@
     @include phone {
         width: 360px;
     }
+
 }
 
 .listItem {
     white-space: nowrap;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }

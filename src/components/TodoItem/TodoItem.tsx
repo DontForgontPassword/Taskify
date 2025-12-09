@@ -1,14 +1,13 @@
 import { useEffect, useState, type FC } from "react";
 import type { TodoObject } from "@/types/Todo";
-import styles from "./TodoItem.module.scss";
-
 import { FiTrash } from "react-icons/fi";
 import { MdEdit } from "react-icons/md";
-import { useTodoStore } from "@/hooks/useTodoStore";
+import { useTodoStore } from "@/store/useTodoStore";
 import { FaCheck } from "react-icons/fa6";
-import TaskChange from "@/layout/TaskChange/TaskChange";
-import SmallButton from "../SmallButton/SmallButton";
-
+import { TaskChange } from "@/layout/TaskChange/TaskChange";
+import { Button } from "@/components/Button/Button"
+import styles from "./TodoItem.module.scss";
+import clsx from "clsx";
 
 const TodoItem: FC<TodoObject> = ({ task, deadline, completed, id }) => {
   const [isCompleted, setCompleted] = useState(completed);
@@ -46,7 +45,7 @@ const TodoItem: FC<TodoObject> = ({ task, deadline, completed, id }) => {
   }, [deadline]);
 
   return (
-    <li className={`${styles.todoItem} ${!isCompleted && isLate ? styles.late : ""} ${isCompleted ? styles.completed : ""}`}>
+    <li className={clsx(styles.todoItem, !isCompleted && isLate && styles.late, isCompleted && styles.completed)}>
       {
         deadline ? <div className={styles.deadlineWrapper}>
           <span className={`${styles.taskStatusText}`}>{deadLineStatus}</span>
@@ -54,28 +53,28 @@ const TodoItem: FC<TodoObject> = ({ task, deadline, completed, id }) => {
         </div> : null
       }
       <div className={styles.wrapper}>
-        <span className={`${styles.taskText} ${isCompleted ? styles.completed : ""}`}>{task}</span>
+        <span className={clsx(styles.taskText, isCompleted ?? styles.completed)}>{task}</span>
         <div className={styles.action}>
-          <SmallButton className={styles.editButton} ariaLabel="Edit task" onClick={handleEdit}>
+          <Button size={"icon"} className={styles.editButton} aria-label="Edit task" onClick={handleEdit}>
             {
               <MdEdit color="white" />
             }
-          </SmallButton>
-          <SmallButton className={styles.removeButton} ariaLabel="Delete task" onClick={handleRemove}>
+          </Button>
+          <Button size={"icon"} className={styles.removeButton} aria-label="Delete task" onClick={handleRemove}>
             <FiTrash color="white" />
-          </SmallButton>
-          <SmallButton className={`${styles.toggleButton} ${isCompleted ? styles.completed : ""}`} ariaLabel="Toggle task" onClick={handleToggle}>
+          </Button>
+          <Button size={"icon"} variant={"green"} className={clsx(styles.toggleButton, isCompleted ?? styles.completed)} aria-label="Toggle task" onClick={handleToggle}>
             {
               isCompleted ? <FaCheck color="white" /> : null
             }
-          </SmallButton>
+          </Button>
         </div>
       </div>
       {
-        !isCompleted && !isLate && isEditing ? <TaskChange setEditing={setEditing} task={task} deadline={deadline} completed={completed} id={id} /> : null
+        !isCompleted && isEditing ? <TaskChange setEditing={setEditing} completed={completed} id={id} /> : null
       }
     </li>
   );
 };
 
-export default TodoItem;
+export { TodoItem }

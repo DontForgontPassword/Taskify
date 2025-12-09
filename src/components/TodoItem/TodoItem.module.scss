@@ -5,23 +5,38 @@
   width: 100%;
   padding: 20px 20px;
 
-  border: 1px solid var(--gray-color);
-  border-radius: 5px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
 
   &.completed {
     background-color: var(--completed-background-color);
     border-color: var(--completed-border-color);
-    color: var(--completed-color);
 
     box-shadow: var(--completed-box-shadow);
+
+
+    .taskText {
+      color: var(--completed-color);
+    }
+
+    .deadlineWrapper {
+      color: var(--completed-color);
+    }
   }
 
   &.late {
     background-color: var(--late-background-color);
     border-color: var(--late-border-color);
-    color: var(--late-color);
 
     box-shadow: var(--late-box-shadow);
+
+    .taskText {
+      color: var(--late-color);
+    }
+
+    .deadlineWrapper {
+      color: var(--late-color);
+    }
   }
 }
 
@@ -53,17 +68,17 @@
 }
 
 .editButton {
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
 }
 
 .removeButton {
-  background-color: var(--red-color);
+  background-color: var(--color-red);
 }
 
 .toggleButton {
   background-color: transparent;
 
   &.completed {
-    background-color: var(--green-color);
+    background-color: var(--color-green);
   }
 }

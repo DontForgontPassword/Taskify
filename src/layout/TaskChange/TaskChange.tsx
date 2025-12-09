@@ -1,20 +1,18 @@
 import { useState, type FC } from "react";
-import { useTodoStore } from "@/hooks/useTodoStore";
-import styles from "./TaskChange.module.scss";
-
-import Input from "@/components/Input/Input";
-import Button from "@/components/Button/Button";
-import SmallButton from "@/components/SmallButton/SmallButton";
+import { useTodoStore } from "@/store/useTodoStore";
 
 import { IoMdClose } from "react-icons/io";
+import { Button } from "@/components/Button/Button";
+import { Input } from "@/components/Input/Input";
+import styles from "./TaskChange.module.scss";
 
-import type { TodoObject } from "@/types/Todo";
-
-type TaskChangeProps = TodoObject & {
+interface TaskChangeProps {
+    completed: boolean,
+    id: number,
     setEditing: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const TaskChange: FC<TaskChangeProps> = ({
+export const TaskChange: FC<TaskChangeProps> = ({
     completed,
     id,
     setEditing
@@ -22,7 +20,7 @@ const TaskChange: FC<TaskChangeProps> = ({
     const [content, setContent] = useState("");
     const [date, setDate] = useState("");
 
-    const editTodo = useTodoStore((state) => state.editTodo);
+    const editTodo = useTodoStore.getState().editTodo;
 
     const handleEditTodo = () => {
         editTodo({
@@ -34,24 +32,28 @@ const TaskChange: FC<TaskChangeProps> = ({
         setEditing(false);
     }
 
-    return <div className={styles.wrapper}>
+    return (
         <div className={styles.taskChange}>
-            <div className={styles.headerWrapper}>
-                <h2 className={styles.title}>Редактирование задачи</h2>
-                <SmallButton className={styles.closeButton} ariaLabel="Close edit window" onClick={() => {
-                    setEditing(false);
-                }}><IoMdClose color="white" /></SmallButton>
+            <div className={styles.wrapper}>
+                <div className={styles.headerWrapper}>
+                    <h2 className={styles.title}>Редактирование задачи</h2>
+                    <Button className={styles.closeButton} onClick={() => {
+                        setEditing(false);
+                    }}><IoMdClose color="white" /></Button>
+                </div>
+
+                <label>Какова Ваша задача?
+                    <Input className={styles.input} type="text" onChange={(event) => {
+                        setContent(event.target.value)
+                    }} />
+                </label>
+                <label>Каков Ваш дед-лайн?
+                    <Input className={styles.input} id="edit-date" type="date" onChange={(event) => {
+                        setDate(event.target.value)
+                    }} />
+                </label>
+                <Button className={styles.button} onClick={handleEditTodo}>Сохранить</Button>
             </div>
-
-            <Input className={styles.input} labelText="Какова Ваша задача?" id="edit-task" type="text" onChange={(event) => {
-                setContent(event.target.value)
-            }} />
-            <Input className={styles.input} labelText="Каков Ваш дед-лайн?" id="edit-date" type="date" onChange={(event) => {
-                setDate(event.target.value)
-            }} />
-            <Button className={styles.button} onClick={handleEditTodo}>Сохранить</Button>
         </div>
-    </div>;
+    )
 }
-
-export default TaskChange;

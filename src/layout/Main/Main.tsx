@@ -14,4 +14,4 @@ const Main: FC<Main> = ({ children }) => {
     </main>;
 }
 
-export default Main;
+export { Main };

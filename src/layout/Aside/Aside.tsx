@@ -1,6 +1,6 @@
 import styles from "./Aside.module.scss"
-import TodoItem from "@/components/TodoItem/TodoItem";
-import { useTodoStore } from "@/hooks/useTodoStore";
+import { TodoItem } from "@/components/TodoItem/TodoItem";
+import { useTodoStore } from "@/store/useTodoStore";
 import { useState } from "react";
 import Select from "react-select";
 
@@ -42,19 +42,21 @@ const Aside = () => {
         }
     });
 
-    return <aside className={styles.aside}>
-        <h2 className={styles.title}>Ваши задачи</h2>
-        <Select onChange={selected => setSelectedOption(selected as Option)} className={styles.select} options={options} defaultValue={
-            options[1]
-        } />
-        <ul className={styles.todoList}>
-            {
-                filteredTodos.map(({ task, deadline, completed, id }) => (
-                    <TodoItem task={task} deadline={deadline} completed={completed} id={id} key={id} />
-                ))
-            }
-        </ul>
-    </aside>;
+    return (
+        <aside className={styles.aside}>
+            <h2 className={styles.title}>Ваши задачи</h2>
+            <Select onChange={selected => setSelectedOption(selected as Option)} className={styles.select} options={options} defaultValue={
+                options[1]
+            } />
+            <ul className={styles.todoList}>
+                {
+                    filteredTodos.map(({ task, deadline, completed, id }) => (
+                        <TodoItem task={task} deadline={deadline} completed={completed} id={id} key={id} />
+                    ))
+                }
+            </ul>
+        </aside>
+    );
 }
 
-export default Aside;
+export { Aside }
