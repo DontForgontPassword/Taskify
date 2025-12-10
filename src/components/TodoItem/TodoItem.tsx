@@ -2,10 +2,10 @@ import { useEffect, useState, type FC } from "react";
 import type { TodoObject } from "@/types/Todo";
 import { FiTrash } from "react-icons/fi";
 import { MdEdit } from "react-icons/md";
-import { useTodoStore } from "@/store/useTodoStore";
+import { useTodoStore } from "@/shared/store/useTodoStore";
 import { FaCheck } from "react-icons/fa6";
-import { TaskChange } from "@/layout/TaskChange/TaskChange";
-import { Button } from "@/components/Button/Button"
+import { TaskChange } from "@/layout/TaskChange";
+import { Button } from "@/components/Button"
 import styles from "./TodoItem.module.scss";
 import clsx from "clsx";
 

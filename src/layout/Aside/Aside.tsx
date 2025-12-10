@@ -1,13 +1,9 @@
 import styles from "./Aside.module.scss"
-import { TodoItem } from "@/components/TodoItem/TodoItem";
-import { useTodoStore } from "@/store/useTodoStore";
+import { TodoItem } from "@/components/TodoItem";
+import { useTodoStore } from "@/shared/store/useTodoStore";
 import { useState } from "react";
+import type { Option } from "@/types/Option";
 import Select from "react-select";
-
-type Option = {
-    value: string,
-    label: string
-}
 
 const options: Option[] = [
     { value: "active", label: "Активные задачи" },

@@ -1,7 +1,7 @@
 import styles from "./Header.module.scss"
 
-import Container from "@layout/Container/Container"
-import { words } from "./words";
+import { Container } from "@/layout/Container"
+import { words } from "@/shared/constants/words";
 
 const Header = () => {
     return (

@@ -1,10 +1,8 @@
 import { useState } from "react";
-
+import { useTodoStore } from "@/shared/store/useTodoStore";
+import { Button } from "@/components/Button";
+import { Input } from "@/components/Input";
 import styles from "./Todo.module.scss"
-import { useTodoStore } from "@/store/useTodoStore";
-
-import { Button } from "@/components/Button/Button";
-import { Input } from "@/components/Input/Input";
 
 const Todo = () => {
     const [content, setContent] = useState("");

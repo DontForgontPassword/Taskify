@@ -10,4 +10,4 @@ const Container: React.FC<Props> = ({ children, className }) => {
     return <div className={clsx(styles.container, className)}>{children}</div>
 }
 
-export default Container;
+export { Container }

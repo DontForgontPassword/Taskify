@@ -28,12 +28,6 @@
       "@/*": [
         "./src/*"
       ],
-      "@layout/*": [
-        "./src/layout/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ]
     }
   },
   "include": [

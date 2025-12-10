@@ -1,9 +1,9 @@
 import { useState, type FC } from "react";
-import { useTodoStore } from "@/store/useTodoStore";
+import { useTodoStore } from "@/shared/store/useTodoStore";
 
 import { IoMdClose } from "react-icons/io";
-import { Button } from "@/components/Button/Button";
-import { Input } from "@/components/Input/Input";
+import { Button } from "@/components/Button";
+import { Input } from "@/components/Input";
 import styles from "./TaskChange.module.scss";
 
 interface TaskChangeProps {
@@ -12,7 +12,7 @@ interface TaskChangeProps {
     setEditing: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const TaskChange: FC<TaskChangeProps> = ({
+const TaskChange: FC<TaskChangeProps> = ({
     completed,
     id,
     setEditing
@@ -57,3 +57,5 @@ export const TaskChange: FC<TaskChangeProps> = ({
         </div>
     )
 }
+
+export { TaskChange }
